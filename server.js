@@ -4,7 +4,8 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 
 // Replace with your VM's public IP or domain
-const target = 'http://4.225.200.37/';
+//const target = 'http://4.225.200.37/';
+const target = process.env.TARGET;
 
 app.use('/', createProxyMiddleware({ target, changeOrigin: true }));
 
