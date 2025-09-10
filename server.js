@@ -14,7 +14,8 @@ app.use((req, res, next) => {
   console.log(`Authenticated: ${isAuthenticated}`);
 
   if (req.originalUrl.includes('abc') && !isAuthenticated) {
-    return res.redirect(authURL + "?post_login_redirect_url=" + req.originalUrl);
+    const redirectUrl = req.originalUrl.replace('abc', '');
+    return res.redirect(authURL + "?post_login_redirect_url=" + redirectUrl);
   }
 
   next();
